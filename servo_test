@@ -1,0 +1,117 @@
+#include <Servo.h>
+
+int baseServoPin = A5;
+int midServoPin = A4;
+int upperServoPin = A3;
+int gripperServoPin = A2;
+
+Servo baseServo;
+Servo midServo;
+Servo upperServo;
+Servo gripperServo;
+
+// Robot Joint Motion Stuctures
+struct armPos {
+  int baseServoAngle;
+  int midServoAngle ;
+  int upperServoAngle ;
+  int gripperServoAngle;
+  int desiredDelay ;
+};
+
+struct armPos armMotion;  // Joint Positions of arm
+
+int servoParallelControl (int thePos, Servo theServo, int theSpeed ) {
+  Serial.println("moving servo");
+
+  int startPos = theServo.read();        //read the current pos
+  int newPos = startPos;
+  //int theSpeed = speed;
+  Serial.print(startPos);
+  Serial.print(" ");
+  Serial.println(newPos);
+
+  //define where the pos is with respect to the command
+  // if the current position is less that the actual move up
+  if (startPos < (thePos - 5)) {
+    newPos = newPos + 1;
+    theServo.write(newPos);
+    delay(theSpeed);
+    return 0;
+  }
+
+  else if (newPos > (thePos + 5)) {
+    newPos = newPos - 1;
+    theServo.write(newPos);
+    delay(theSpeed);
+    return 0;
+  }
+
+  else {
+    return 1;
+  }
+
+}
+
+void moveTo(struct armPos armMotion) {
+
+  int status1 = 0;
+  int status2 = 0;
+  int status3 = 0;
+  int status4 = 0;
+  int done = 0 ;
+
+  while ( done == 0) {
+    //move all servos to the desired position
+    //this loop will cycle through the servos sending each the desired position.
+    //Each call will cause the servo to iterate about 1-5 degrees
+    //the rapid cycle of the loop makes the servos appear to move simultaneously
+    status1 = servoParallelControl(armMotion.baseServoAngle, baseServo, armMotion.desiredDelay);
+    status2 = servoParallelControl(armMotion.midServoAngle, midServo, armMotion.desiredDelay);
+    status3 = servoParallelControl(armMotion.upperServoAngle, upperServo, armMotion.desiredDelay);
+    status4 = servoParallelControl(armMotion.gripperServoAngle, gripperServo, armMotion.desiredDelay);
+
+    //continue until all have reached the desired position
+    if (status1 == 1 & status2 == 1 & status3 == 1 & status4 == 1) {
+      done = 1;
+    }
+  }// end of while
+} //function end
+
+void setup() {
+  Serial.begin(57600);
+  baseServo.attach(baseServoPin);
+  midServo.attach(midServoPin);
+  upperServo.attach(upperServoPin);
+  gripperServo.attach(gripperServoPin);
+  delay(500);
+  baseServo.write(90);
+  midServo.write(90);
+  upperServo.write(90);
+  gripperServo.write(90);
+  delay(2000);
+  armMotion.baseServoAngle = 90;
+  armMotion.midServoAngle = 90;
+  armMotion.upperServoAngle = 90;
+  armMotion.gripperServoAngle = 130;
+  armMotion.desiredDelay = 5;
+  moveTo(armMotion);
+  delay(2000);
+}
+
+void loop() {
+  armMotion.baseServoAngle = 130;
+  armMotion.midServoAngle = 130;
+  armMotion.upperServoAngle = 130;
+  armMotion.gripperServoAngle = 130;
+  armMotion.desiredDelay = 5;
+  moveTo(armMotion);
+  delay(2000);
+  armMotion.baseServoAngle = 90;
+  armMotion.midServoAngle = 90;
+  armMotion.upperServoAngle = 90;
+  armMotion.gripperServoAngle = 90;
+  armMotion.desiredDelay = 5;
+  moveTo(armMotion);
+  delay(2000);
+}
