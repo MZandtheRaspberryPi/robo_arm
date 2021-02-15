@@ -45,14 +45,7 @@ class RoboArm {
       upperServo.attach(upperPin);
       gripperServo.attach(gripperPin);
       gripperRotationServo.attach(gripperRotationPin);
-      delay(500);
-      // setting all servos to default position
-      baseServo.write(90);
-      midServo.write(90);
-      upperServo.write(90);
-      gripperServo.write(90);
-      gripperRotationServo.write(90);
-      delay(500);      
+      delay(500);   
   }
 
   int servoParallelControl (int thePos, Servo theServo, int theSpeed ) {
@@ -216,26 +209,31 @@ class RoboArm {
       case 1:
         servoPos = baseServo.read();
         servoPos += changeInPos;
+        servoPos = constrain(servoPos, baseServoLowerLimit, baseServoUpperLimit);
         armMotion.baseServoAngle = servoPos;
         break;
       case 2:
         servoPos = midServo.read();
         servoPos += changeInPos;
+        servoPos = constrain(servoPos, midServoLowerLimit, midServoUpperLimit);
         armMotion.midServoAngle = servoPos;
         break;
       case 3:
         servoPos = upperServo.read();
         servoPos += changeInPos;
+        servoPos = constrain(servoPos, upperServoLowerLimit, upperServoUpperLimit);
         armMotion.upperServoAngle = servoPos;
         break;
       case 4:
         servoPos = gripperServo.read();
         servoPos += changeInPos;
+        servoPos = constrain(servoPos, gripperServoLowerLimit, gripperServoUpperLimit);
         armMotion.gripperServoAngle = servoPos;
         break;
       case 5:
         servoPos = gripperRotationServo.read();
         servoPos += changeInPos;
+        servoPos = constrain(servoPos, gripperRotationServoLowerLimit, gripperRotationServoUpperLimit);
         armMotion.gripperRotationAngle = servoPos;
         break;
     }
@@ -294,4 +292,22 @@ void setup() {
 
 void loop() {
   mz_robot.listenJoystick();
+//  armMotion.baseServoAngle = 18;
+//  armMotion.midServoAngle = 68;
+//  armMotion.upperServoAngle = 63;
+//  armMotion.gripperServoAngle = 153;
+//  armMotion.gripperRotationAngle = 10;
+//  armMotion.desiredDelay = 5;
+//  mz_robot.moveTo(armMotion);
+//  delay(2000);
+//  armMotion.baseServoAngle = 90;
+//  armMotion.midServoAngle = 90;
+//  armMotion.upperServoAngle = 90;
+//  armMotion.gripperServoAngle = 90;
+//  armMotion.gripperRotationAngle = 90;
+//  armMotion.desiredDelay = 5;
+//  mz_robot.moveTo(armMotion);
+//  delay(2000);
+//  
+  
 }
