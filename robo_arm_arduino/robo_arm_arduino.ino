@@ -11,6 +11,24 @@
 #define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+// current values
+//int joystickLXPin = A0;
+//int joystickLYPin = A1;
+//int joystickLButtonPin = 2;
+//
+//int joystickRYPin = A3;
+//int joystickRXPin = A2;
+//int joystickRButtonPin = 3;
+
+//pinMode(joystickLButtonPin, INPUT_PULLUP);
+//pinMode(joystickRButtonPin, INPUT_PULLUP);
+
+//Servo baseServo;
+//Servo midServo;
+//Servo upperServo;
+//Servo gripperServo;
+//Servo gripperRotationServo;
+
 // Robot Joint Motion Stuctures
 struct armPos {
   int baseServoAngle;
