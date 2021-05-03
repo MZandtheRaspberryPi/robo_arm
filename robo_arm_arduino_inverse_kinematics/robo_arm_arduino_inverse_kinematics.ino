@@ -41,6 +41,7 @@ public:
 
 Interpolation interpX;        // interpolation objects
 Interpolation interpZ;
+Interpolation interpY;
 
 // current values
 //int joystickLXPin = A0;
