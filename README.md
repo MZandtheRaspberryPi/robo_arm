@@ -18,6 +18,8 @@ This is a robot arm project that has two capabilities. The first is an arduino b
 7. Complex Arduino Software with IK Model
 8. Complex ROS Software with IK Model
 
+Battery Fiasco
+
 # Inverse Kinematics
 
 # Setting It Up
