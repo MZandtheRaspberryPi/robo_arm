@@ -3,6 +3,23 @@ This is a robot arm project that has two capabilities. The first is an arduino b
 
 [Here](https://www.youtube.com/watch?v=9vvvBXWQKJA) is a demo of the arduino based version of the arm, and [here](https://www.youtube.com/watch?v=Fptv3H4Jj54) is a demo of the ros based version of the arm.  
 
+# Table of Contents
+[Project Phases](#Project-Phases)
+[Inverse Kinematics](#Inverse-Kinematics)
+[Setting Up your Arm](#Setting-It-Up)  
+
+# Project Phases
+1. Repairing Arm
+2. Testing Electronics
+3. Initial Arduino Approach
+4. 3d Modelling/Printing Base
+5. Assembly
+6. Simple Arduino Software
+7. Complex Arduino Software with IK Model
+8. Complex ROS Software with IK Model
+
+# Inverse Kinematics
+
 # Setting It Up
 
 First, make a catkin workspace for the robo arm.
