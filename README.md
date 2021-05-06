@@ -44,6 +44,6 @@ Early on, realized that having 1 publisher and 1 subscriber in an Arduino Uno wa
 
 message:
 ```
-rostopic pub /robo_arm_teleop/arm_movementobo_arm/arm_control -1 '{x: 0, y: 180, z: 158, grip: 1700, duration: 1000}'
+rostopic pub /robo_arm_teleop/arm_movement robo_arm/arm_control -1 '{x: 0, y: 180, z: 158, grip: 1700, duration: 1000}'
 ```
 

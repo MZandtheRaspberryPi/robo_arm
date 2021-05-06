@@ -95,16 +95,18 @@ int lastElbowAngle;
 int lastShoulderAngle;
 
 
-// setting x, y, z coords in mm to start with. This is a default pos that won't break anything.
-float x = 0;
-float y = 170;
-float z = 158;
-float grip = gripperServoDefaultPos;
+// setting x, y, z coords to null to start with. 
+// this is because in setup we'll use interp to get to the defualt x y z wiht targets below
+// default pos is x 0 y 170, z 158, in mm, grip 1640 in pwm (open)
+float x;
+float y;
+float z;
+float grip;
 
-float xTarget;
-float yTarget;
-float zTarget;
-float gripTarget;
+float xTarget = 0;
+float yTarget = 170;
+float zTarget = 158;
+float gripTarget = gripperServoDefaultPos;
 
 int duration;
 
@@ -125,6 +127,16 @@ void setupObjs(){
     elbowServo.writeMicroseconds(elbowServoDefaultPos);
     gripperServo.writeMicroseconds(gripperServoClosedPos);
     gripperRotationServo.writeMicroseconds(gripperRotationServoDefaultPos);
+
+    // setting up interpolation object to start from the default position, without moving servos
+    // this is because else it tries to start from zero on the first arm movement
+
+    while ((int)z != (int)zTarget || (int)x != (int)xTarget || (int)y != (int)yTarget || (int)grip != (int)gripTarget) {     
+      x = interpX.go(xTarget, duration);
+      y = interpY.go(yTarget, duration);
+      z = interpZ.go(zTarget, duration);
+      grip = interpGrip.go(gripTarget, duration);    
+    }
 }
 
 

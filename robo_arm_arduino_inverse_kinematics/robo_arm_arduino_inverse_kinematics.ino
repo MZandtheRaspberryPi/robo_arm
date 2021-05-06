@@ -15,45 +15,6 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 unsigned long currentMillis;
 unsigned long previousMillis;
 
-//*****************************
-class Interpolation {  
-public:
-    rampInt myRamp;
-    int interpolationFlag = 0;
-    int savedValue;    
-
-    int go(int input, int duration) {
-
-      if (input != savedValue) {   // check for new data
-          interpolationFlag = 0;
-      }
-      savedValue = input;          // bookmark the old value  
-    
-      if (interpolationFlag == 0) {                                        // only do it once until the flag is reset
-          myRamp.go(input, duration, LINEAR, ONCEFORWARD);              // start interpolation (value to go to, duration)
-          interpolationFlag = 1;
-      }
-    
-      int output = myRamp.update();               
-      return output;
-    }
-};
-
-Interpolation interpX;        // interpolation objects
-Interpolation interpZ;
-Interpolation interpY;
-
-// current values
-//int joystickLXPin = A0;
-//int joystickLYPin = A1;
-//int joystickLButtonPin = 2;
-//
-//int joystickRYPin = A3;
-//int joystickRXPin = A2;
-//int joystickRButtonPin = 3;
-
-//pinMode(joystickLButtonPin, INPUT_PULLUP);
-//pinMode(joystickRButtonPin, INPUT_PULLUP);
 
 class RoboArm {
 
@@ -289,14 +250,14 @@ class RoboArm {
   public:
   void robotLoop(){
     
-    changeXPos = readJoystickDirection(this->joystickLXPin,  425, 600, -1, 1);
-    changeYPos = readJoystickDirection(this->joystickLYPin,  425, 600, -1, 1);
+    changeXPos = readJoystickDirection(this->joystickLXPin,  425, 600, -3, 3);
+    changeYPos = readJoystickDirection(this->joystickLYPin,  425, 600, -3, 3);
     if (readJoystickButton(this->joystickLButtonPin, this->lastLButtonPress)){
       Serial.println("L Button Pressed");
     }
 
-    changeGripperPos = readJoystickDirection(this->joystickRXPin,  425, 600, -5, 5);
-    changeZPos = readJoystickDirection(this->joystickRYPin,  425, 600, -1, 1);
+    changeGripperPos = readJoystickDirection(this->joystickRXPin,  425, 600, -8, 8);
+    changeZPos = readJoystickDirection(this->joystickRYPin,  425, 600, -3, 3);
     if (readJoystickButton(this->joystickRButtonPin, this->lastRButtonPress)){
       Serial.println("R Button Pressed");
     }

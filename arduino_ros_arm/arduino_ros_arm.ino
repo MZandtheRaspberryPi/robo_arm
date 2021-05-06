@@ -3,6 +3,7 @@
 #include "arm_movement.h"
 
 ros::NodeHandle  nh;
+char result[40]; // Buffer big enough for the below big log msg, generally
 
 void arm_cb( const robo_arm::arm_control& arm_msg){
   xTarget = arm_msg.x;
@@ -10,13 +11,16 @@ void arm_cb( const robo_arm::arm_control& arm_msg){
   zTarget = arm_msg.z;
   gripTarget = arm_msg.grip;
   duration = arm_msg.duration;
+  nh.loginfo("Moving");
 
   while ((int)z != (int)zTarget || (int)x != (int)xTarget || (int)y != (int)yTarget || (int)grip != (int)gripTarget) {
-    nh.loginfo("moving");
-    x = interpY.go(xTarget, duration);
+    sprintf(result,"x: %d y: %d z: %d g: %d", (int)x, (int)y, (int)z, (int)grip);
+    nh.loginfo(result);
+    
+    x = interpX.go(xTarget, duration);
     y = interpY.go(yTarget, duration);
     z = interpZ.go(zTarget, duration);
-    grip = interpZ.go(gripTarget, duration);
+    grip = interpGrip.go(gripTarget, duration);
 
     moveArm(x, y, z, grip);
     
