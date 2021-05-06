@@ -6,7 +6,8 @@ This is a robot arm project that has two capabilities. The first is an arduino b
 # Table of Contents
 [Project Phases](#Project-Phases)  
 [Inverse Kinematics](#Inverse-Kinematics)  
-[Setting Up your Arm](#Setting-It-Up)   
+[Setting Up your Arm (ROS)](#Setting-It-Up-ROS)  
+[Setting Up your Arm (Arduino)](#Setting-It-Up-Arduino)   
 
 # Project Phases
 1. Repairing Arm
@@ -22,7 +23,7 @@ Battery Fiasco
 
 # Inverse Kinematics
 
-# Setting It Up
+# Setting It Up ROS
 
 First, make a catkin workspace for the robo arm.
 ```
@@ -60,3 +61,4 @@ message example:
 rostopic pub /robo_arm_teleop/arm_movement robo_arm/arm_control -1 '{x: 0, y: 180, z: 158, grip: 1700, duration: 1000}'
 ```
 
+# Setting It Up Arduino
