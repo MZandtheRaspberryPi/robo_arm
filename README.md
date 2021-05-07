@@ -44,7 +44,7 @@ From here, I rebuilt the arm and started testing the electronics system I wanted
 ![electronics](demo_screenshots/20210213_154335.jpg)  
 
 You can see here all the guts of the system with the emergency off switch, relay, OLED display, and more:  
-[!electronics2](demo_screenshots/electronics.gif)  
+![!electronics2](demo_screenshots/electronics.gif)  
 
 ## Initial Arduino Approach
 This would end up being simplistic code that moved each servo in angle space, moving them all in small steps to simulate coordinated motion. The Arduino code for this is in the robo_arm_arduino folder. It was an early prototype that I would build on in later software iterations, but it did serve as a proof of concept that coordinated movement was possible with the hardware setup. That said, if you wanted to move the gripper forward, you had to blend the angles yourself. Obviously this isn't ideal.  
