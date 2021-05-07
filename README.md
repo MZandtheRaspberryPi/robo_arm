@@ -73,6 +73,9 @@ I also cleaned out the tube that feeds plastic to the extruder. you can see ther
 This lead to problems where parts would be missing a layer, where the extruder got stuck and couldn't push plastic through:  
 ![bad_ladyer](demo_screenshots/20210321_182212.jpg)  
 
+I also had an awkward problem, where when splitting up the top of the piece to print it in two seperate pieces (it was too big for my printer) I made a dovetail joint. That said, I split them using a 2mm surface instead of a .2mm surface and they couldn't fit back together again. Thankfully I only had to print one of these again as the surface extruded only into one side: 
+![bad_extrude](demo_screenshots/20210310_191413.jpg)  
+
 I exited this phase having learned a lot about troubleshooting my printer, and having replaced a lot of parts to make the printer more durable and reliable in the future. Overall, a big win as I rely on this printer for many projects.  
 
 ## Assembly
