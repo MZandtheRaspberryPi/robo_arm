@@ -64,7 +64,7 @@ Given this base was going to be quite big, 300mm by 155mm and 90mm tall, if I me
 I actually had some long put off maintenance that I had to do on my 3d printer. I put it off even longer, and kept having trouble getting prints to finish. For instance, look what I came home to one day:  
 ![spaghetti](demo_screenshots/20210317_181546.jpg)  
 
-I eventually would install OctoPrint during this faze so that I could remotely monitor and shutdown my printer. I also replaced a clogged nozzle, replaced the springs on the 3d Printer Bed with stronger ones, and many other changes. Check out how gunked the nozzle was after one of the print failures:  
+I eventually would install OctoPrint during this phase so that I could remotely monitor and shutdown my printer. I also replaced a clogged nozzle, replaced the springs on the 3d Printer Bed with stronger ones, and many other changes. Check out how gunked the nozzle was after one of the print failures:  
 ![gunk](demo_screenshots/20210321_120244.jpg)  
 
 I also cleaned out the tube that feeds plastic to the extruder. you can see there was plastic stuck in it, which meant the extruder couldn't push the new plastic through:
