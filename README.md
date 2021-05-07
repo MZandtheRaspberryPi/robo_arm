@@ -100,7 +100,9 @@ Consider this picture as if you were looking down at the robot arm and the base.
 ![looking_down](demo_screenshots/xyz_roboarm_pt1.png)  
 
 Then in 3d space, we see F is the base of a triangle. We know the z coordinate, so can solve the third side of the triangle given its a right triangle. Now we have three sides of a triangle and we know the upper and lower arm lengths, so as per the first picture in this section we can solve the remaining two servos.
-![3d_space](demo_screenshots/xyz_roboarm_pt2.png)
+![3d_space](demo_screenshots/xyz_roboarm_pt2.png)  
+
+You map everything together using offsets that come from how you've installed your servos. I didn't install mine so that when commanded to 45 degrees they made a 45 degree line with the table, so I had to have offsets for that.
 
 
 # Setting It Up ROS
